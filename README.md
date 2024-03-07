@@ -29,6 +29,6 @@
     It return entries,get,getAll,size and etc. all are functions
   ```
   const searchparam = useSearcParams();
-  searchparam.fun(){fun = entries,has,get,getAll}
+  searchparam.fun() {fun = entries,has,get,getAll}
   ```
   -
