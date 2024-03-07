@@ -1,9 +1,12 @@
 import { UserButton } from "@clerk/nextjs";
+import { SearchInput } from "./search-inputbar";
 
 const Navbar = () => {
   return (
-    <div className="bg-green-200 flex items-center gap-x-4 p-5">
-      <div className="hidden lg:flex lg:flex-1">{/* search bar */}</div>
+    <div className=" flex items-center gap-x-4 p-5">
+      <div className="hidden lg:flex lg:flex-1">
+        <SearchInput />
+      </div>
       <UserButton />
     </div>
   );
