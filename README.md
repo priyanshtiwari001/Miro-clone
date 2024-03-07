@@ -23,3 +23,12 @@
   - What is pre-fetching?
     - It is a way to preload a routein the background before user visits it.
   - To check whether link is active or not , we use a hook called `usepathname()`
+- useSearchParams:
+  - It is a Client Component hook that lets you read the current URL's query string.
+  - It returns read-only version of URLSearchParams.
+    It return entries,get,getAll,size and etc. all are functions
+  ```
+  const searchparam = useSearcParams();
+  searchparam.fun(){fun = entries,has,get,getAll}
+  ```
+  -
