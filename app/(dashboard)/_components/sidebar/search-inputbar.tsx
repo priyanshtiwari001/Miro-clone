@@ -5,29 +5,28 @@ import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import qs from "query-string";
 import { useRouter } from "next/navigation";
-import { useDebounceCallback, useDebounceValue } from "usehooks-ts";
+import { useDebounce } from "@/lib/useDebounce";
 export const SearchInput = () => {
   const route = useRouter();
   const [value, setValue] = useState("");
-  const debounced = useDebounceCallback(setValue, 0);
-
+  const debouncevalue = useDebounce(value, 500);
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    debounced(e.target.value);
+    setValue(e.target.value);
   };
-
   useEffect(() => {
+    //stringigyurl is  a function that helps create a URL by combining a base URL and query parameters. and then using route.push(url) to navigate there
     const url = qs.stringifyUrl(
       {
         url: "/",
         query: {
-          search: value,
+          search: debouncevalue,
         },
       },
       { skipEmptyString: true, skipNull: true }
     );
-
+    console.log(typeof url);
     route.push(url);
-  }, [value, route]);
+  }, [debouncevalue, route]);
 
   return (
     <div className="w-full relative">
