@@ -11,6 +11,8 @@
 5. lucide-react- for svg icons
 6. Query-string - allows you to parse and stringify URL query strings in your projects. It offers a straightforward way to work with query parameters in URLs.
 7. usehooks-ts - react hooks library with ts
+8. date-fns
+9. redux-toolkit - npm install @reduxjs/toolkit
 
 ## Nextjs quick note
 

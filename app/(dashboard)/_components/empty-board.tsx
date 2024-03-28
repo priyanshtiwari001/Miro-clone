@@ -11,7 +11,6 @@ import { toast } from "sonner";
 export default function EmptyBoard() {
   const { organization } = useOrganization();
   const create = useMutation(api.board.create);
-  console.log(create);
   const onClicker = () => {
     if (!organization) return;
     create({
