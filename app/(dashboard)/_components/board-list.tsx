@@ -7,6 +7,8 @@ import EmptyFavorites from "./empty-favorites";
 import EmptySearch from "./empty-search";
 import BoardCard from "./board-card";
 import NewBoardButton from "./board-card/new-board-button";
+import Footer from "./board-card/footer";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface BoardListProps {
   orgId: string;
@@ -16,7 +18,7 @@ interface BoardListProps {
   };
 }
 export default function BoardList({ orgId, query }: BoardListProps) {
-  const data = useQuery(api.boards.get, { orgId });
+  const data = useQuery(api.boards.get, { orgId, ...query });
 
   if (data === undefined) {
     return (
@@ -26,6 +28,9 @@ export default function BoardList({ orgId, query }: BoardListProps) {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 2xl:grid-cols-6 gap-5 mt-8 pb-10">
           <NewBoardButton orgId={orgId} disabled />
+          <BoardCard.Skeleton />
+          <BoardCard.Skeleton />
+          <BoardCard.Skeleton />
           <BoardCard.Skeleton />
         </div>
       </div>
@@ -58,8 +63,8 @@ export default function BoardList({ orgId, query }: BoardListProps) {
             authorName={board.authorName}
             imageUrl={board.imageUrl}
             createdAt={board._creationTime}
-            ordId={board.orgId}
-            isFavorite={false}
+            orgId={board.orgId}
+            isFavorite={board.isFavorite}
           />
         ))}
       </div>

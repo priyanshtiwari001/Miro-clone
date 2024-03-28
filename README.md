@@ -13,6 +13,7 @@
 7. usehooks-ts - react hooks library with ts
 8. date-fns
 9. redux-toolkit - npm install @reduxjs/toolkit
+10. npm i convex-helpers
 
 ## Nextjs quick note
 

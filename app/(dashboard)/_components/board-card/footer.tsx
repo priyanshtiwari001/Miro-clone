@@ -16,6 +16,11 @@ const Footer = ({
   onClick,
   disabled,
 }: FooterProps) => {
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    event.preventDefault();
+    onClick();
+  };
   return (
     <div className="relative bg-white p-3">
       <p className="text-[13px] truncate max-w-[calc(100%-20px)]">{title}</p>
@@ -25,7 +30,7 @@ const Footer = ({
       <button
         type="button"
         disabled={disabled}
-        onClick={onClick}
+        onClick={handleClick}
         className={cn(
           "opacity-0 group-hover:opacity-100 transition absolute top-3 right-3 hover:text-yellow-500",
           disabled && "cursor-not-allowed opacity-75"
@@ -42,3 +47,12 @@ const Footer = ({
   );
 };
 export default Footer;
+
+Footer.Skeleton = function FooterSkeleton() {
+  return (
+    <div className="relative bg-white p-3">
+      <p className="truncate max-w-[calc(100%-20px)] bg-blue-300"></p>
+      <p className="opacity-0 group-hover:opacity-45 transition-opacity text-[11px]  truncate bg-blue-800"></p>
+    </div>
+  );
+};
